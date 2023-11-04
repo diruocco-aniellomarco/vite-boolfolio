@@ -1,5 +1,6 @@
 <script>
 import ProjectList from "./components/projects/ProjectList.vue";
+
 import axios from "axios";
 
 export default {
@@ -30,10 +31,7 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <h1>Hello world</h1>
-    <ProjectList />
-  </div>
+  <ProjectList :projects="projects" class="mb-4" />
 </template>
 
 <style lang="scss"></style>
