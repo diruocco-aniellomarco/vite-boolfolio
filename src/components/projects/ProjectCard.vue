@@ -39,8 +39,18 @@ export default {
           </p>
         </li>
       </ul>
-
-      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      <div class="card-footer">
+        <router-link
+          class="btn btn-primary"
+          :to="{
+            name: 'project-detail',
+            params: {
+              id: project.id,
+            },
+          }"
+          >Dettagli</router-link
+        >
+      </div>
     </div>
   </div>
 </template>

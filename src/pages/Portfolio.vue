@@ -13,8 +13,10 @@ export default {
 </script>
 
 <template>
-  <h1>{{ title }}</h1>
-  <ProjectList />
+  <div class="container">
+    <h1>{{ title }}</h1>
+    <ProjectList />
+  </div>
 </template>
 
 <style lang="scss"></style>
