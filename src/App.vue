@@ -1,20 +1,16 @@
 <script>
-// import ProjectList from "./components/projects/ProjectList.vue";
+import NavBarUi from "./components/ui/NavBarUi.vue";
 
 export default {
   // data() {
   //   return {};
   // },
-  // components: { ProjectList },
+  components: { NavBarUi },
 };
 </script>
 
 <template>
-  <!-- :projects="projects"
-    :links="pagination.links"
-    @pagination-view="fetchProjects" -->
-
-  <!-- <ProjectList /> -->
+  <NavBarUi />
   <div class="container">
     <router-view />
   </div>
