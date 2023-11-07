@@ -1,12 +1,11 @@
 <script>
-import ProjectList from "./components/projects/ProjectList.vue";
+// import ProjectList from "./components/projects/ProjectList.vue";
 
 export default {
   // data() {
   //   return {};
   // },
-
-  components: { ProjectList },
+  // components: { ProjectList },
 };
 </script>
 
@@ -15,7 +14,10 @@ export default {
     :links="pagination.links"
     @pagination-view="fetchProjects" -->
 
-  <ProjectList />
+  <!-- <ProjectList /> -->
+  <div class="container">
+    <router-view />
+  </div>
 </template>
 
 <style lang="scss"></style>
