@@ -53,9 +53,12 @@ export default {
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li v-for="link in pagination.links" class="page-item">
-            <a class="page-link" @click="fetchProjects(link.url)" href="#">{{
-              link.label
-            }}</a>
+            <a
+              class="page-link"
+              @click="fetchProjects(link.url)"
+              href="#"
+              v-html="link.label"
+            ></a>
           </li>
         </ul>
       </nav>
