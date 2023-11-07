@@ -1,24 +1,36 @@
 <script>
 import ProjectCard from "./ProjectCard.vue";
+import axios from "axios";
 
 export default {
   data() {
     return {
       title: "Lista progetti",
       view_p: null,
+      api: {
+        baseUrl: "http://127.0.0.1:8000/api/",
+      },
     };
   },
   components: { ProjectCard },
 
-  props: {
-    projects: Array,
-    links: Array,
-  },
-  // methods: {
-  //   pagination(uri) {
-  //     this.$emit("fetchProjects", uri);
-  //   },
+  // props: {
+  //   projects: Array,
+  //   links: Array,
   // },
+
+  methods: {
+    fetchProjects(uri = this.api.baseUrl + "projects") {
+      axios.get(uri).then((response) => {
+        // console.log(response.data.data);
+        this.projects = response.data.data;
+        this.pagination.links = response.data.links;
+      });
+    },
+  },
+  created() {
+    this.fetchProjects();
+  },
 };
 </script>
 
@@ -42,12 +54,9 @@ export default {
     <div class="row">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li
-            v-for="link in links"
-            class="page-item"
-            @click="$emit('pagination-view', link.url)"
-          >
-            <a class="page-link" href="#">{{ link.label }}</a>
+          <li v-for="link in links" class="page-item">
+            <!-- @click="$emit('pagination-view', link.url)" -->
+            <a class="page-link" :href="link.url">{{ link.label }}</a>
           </li>
         </ul>
       </nav>
