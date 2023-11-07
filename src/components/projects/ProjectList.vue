@@ -2,14 +2,18 @@
 import ProjectCard from "./ProjectCard.vue";
 import axios from "axios";
 
+import { store } from "../../data/store";
+
 export default {
   data() {
     return {
       title: "Lista progetti",
       view_p: null,
-      api: {
-        baseUrl: "http://127.0.0.1:8000/api/",
+      projects: [],
+      pagination: {
+        links: [],
       },
+      // links: null,
     };
   },
   components: { ProjectCard },
@@ -20,9 +24,10 @@ export default {
   // },
 
   methods: {
-    fetchProjects(uri = this.api.baseUrl + "projects") {
+    fetchProjects(uri = store.api.baseUrl + "projects") {
       axios.get(uri).then((response) => {
         // console.log(response.data.data);
+
         this.projects = response.data.data;
         this.pagination.links = response.data.links;
       });
@@ -42,21 +47,15 @@ export default {
       <div class="col" v-for="project in projects">
         <ProjectCard :project="project" />
       </div>
-
-      <!-- <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li v-for="link in links" class="page-item">
-            <a class="page-link"></a>
-          </li>
-        </ul>
-      </nav> -->
     </div>
+
     <div class="row">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li v-for="link in links" class="page-item">
-            <!-- @click="$emit('pagination-view', link.url)" -->
-            <a class="page-link" :href="link.url">{{ link.label }}</a>
+          <li v-for="link in pagination.links" class="page-item">
+            <a class="page-link" @click="fetchProjects(link.url)" href="#">{{
+              link.label
+            }}</a>
           </li>
         </ul>
       </nav>

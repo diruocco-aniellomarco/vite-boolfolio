@@ -2,14 +2,9 @@
 import ProjectList from "./components/projects/ProjectList.vue";
 
 export default {
-  data() {
-    return {
-      projects: [],
-      pagination: {
-        links: null,
-      },
-    };
-  },
+  // data() {
+  //   return {};
+  // },
 
   components: { ProjectList },
 };
