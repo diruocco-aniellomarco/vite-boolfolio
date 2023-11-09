@@ -21,7 +21,7 @@ export default {
 
 <template>
   <div class="card h-100">
-    <img :src="coverView(project.cover)" class="card-img-top" alt="..." />
+    <img :src="coverView(project.cover_image)" class="card-img-top" alt="..." />
 
     <div class="card-body">
       <h5 class="card-title">{{ project.name }}</h5>
