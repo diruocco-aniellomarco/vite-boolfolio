@@ -40,7 +40,18 @@ export default {
           </p>
         </li>
         <li class="list-group-item">
-          <p><strong>Tipo: </strong>{{ project.type.label }}</p>
+          <p>
+            <strong>Tipo: </strong>
+            <router-link
+              :to="{
+                name: 'project-type',
+                params: {
+                  type_id: project.type_id,
+                },
+              }"
+              >{{ project.type.label }}
+            </router-link>
+          </p>
         </li>
         <li class="list-group-item">
           <strong>Tecnologie: </strong>
