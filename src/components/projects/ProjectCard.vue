@@ -34,9 +34,20 @@ export default {
           }}</a>
         </li>
         <li class="list-group-item">
-          <p class="card-text">
+          <p class="card-text text-wrap text-truncate" style="height: 100px">
+            <strong>Descrizione:</strong> <br />
             {{ project.description }}
           </p>
+        </li>
+        <li class="list-group-item">
+          <p><strong>Tipo: </strong>{{ project.type.label }}</p>
+        </li>
+        <li class="list-group-item">
+          <strong>Tecnologie: </strong>
+          <span v-for="(tecnology, index) in project.tecnologies">
+            {{ tecnology.name }}
+            <span v-if="index + 1 < project.tecnologies.length">,</span>
+          </span>
         </li>
       </ul>
       <div class="card-footer">
@@ -48,7 +59,7 @@ export default {
               id: project.id,
             },
           }"
-          >Dettagli</router-link
+          >dettagli</router-link
         >
       </div>
     </div>
