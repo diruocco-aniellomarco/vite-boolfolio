@@ -1,27 +1,35 @@
 <script>
-import ProjectCard from "../components/projects/ProjectCard.vue";
+import ProjectTypeList from "../components/projects/ProjectTypeList.vue";
 import axios from "axios";
-
 import { store } from "../data/store";
 
 export default {
   data() {
     return {
-      projects: [],
+      type: {
+        id: "",
+        label: "",
+      },
     };
   },
+  components: { ProjectTypeList },
 
   created() {
-    console.log(
-      store.api.baseUrl + "project-type/" + this.$route.params.type_id
-    );
+    axios
+      .get(store.api.baseUrl + "types/" + this.$route.params.type_id)
+      .then((response) => {
+        this.type = response.data;
+      });
   },
 };
 </script>
 
 <template>
   <div class="container">
-    <h2>Progetti per tipo</h2>
+    <h2>
+      Progetti per tipo: <span v-if="type.id">{{ type.label }}</span>
+    </h2>
+    <ProjectTypeList :type_id="type.id" v-if="type.id" />
   </div>
 </template>
 
